@@ -1,0 +1,27 @@
+$color-primary: darkgreen;
+$bkg-primary: #f8f8f8;
+body {
+  background-color: $bkg-primary;
+}
+.container {
+  max-width: 500px;
+  margin: 10px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border: solid 1px #eeeeee;
+
+  .logo {
+  	background-image: url('../img/z.png');
+  	display: block;
+  	width: 126px;
+  	height: 98px;
+  	margin: 0 auto;
+  }
+
+  h1 {
+    margin-top: 0;
+    text-align: center;
+  }
+}
+
+@import "../js/components/loader";
