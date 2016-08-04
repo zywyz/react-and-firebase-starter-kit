@@ -16,7 +16,12 @@ export default class SubpageView extends Component {
     const { data } = this.props;
     let list = [];
     if (Object.keys(data).length) {
-      list = Object.keys(data).map((k) => <div key={k} className="list-item">{k} - {data[k]}</div>);
+      list = Object.keys(data).map((k) => (
+        <div key={k} className="list-item">
+          <div className="key">{k}</div>
+          <div className="value">{data[k]}</div>
+        </div>
+      ));
     } else {
       list = <Loader />;
     }
@@ -25,6 +30,7 @@ export default class SubpageView extends Component {
         <h2>
           Subpage
         </h2>
+        <p>Data below comes from firebase. After refresh you can notice time for getting data.</p>
         {list}
       </div>
     );

@@ -1,0 +1,11 @@
+.list-item {
+  margin-bottom: 25px;
+  .key {
+    font-size: 1.2em;
+    color: $color-primary;
+    margin-bottom: 5px;
+  }
+  .value {
+    font-weight: 300;
+  }
+}

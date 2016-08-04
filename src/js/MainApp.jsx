@@ -7,9 +7,11 @@ const propTypes = {
 
 const MainApp = ({ children }) => (
   <div className="container">
-    <div className="logo"></div>
-    <h1>MainApp</h1>
-    <Nav />
+    <header>
+      <div className="logo"></div>
+      <h1>React & Firebase starter kit</h1>
+      <Nav />
+    </header>
     <div className="content">
       {children}
     </div>
