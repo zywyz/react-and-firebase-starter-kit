@@ -12,7 +12,7 @@ var browserSync = require('browser-sync');
 var historyApiFallback = require('connect-history-api-fallback');
 var autoprefixer = require('gulp-autoprefixer');
 var sass = require('gulp-sass');
-var minifyCSS= require('gulp-minify-css');
+var cleanCSS = require('gulp-clean-css');
 var rev = require('gulp-rev');
 var revReplace = require('gulp-rev-replace');
 var runSequence = require('run-sequence');
@@ -87,7 +87,7 @@ gulp.task('css', function() {
     }))
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
-    .pipe(gulpif(BUILD, minifyCSS()))
+    .pipe(gulpif(BUILD, cleanCSS()))
     .pipe(gulpif(BUILD, rev()))
     .pipe(gulp.dest(path.DEST_CSS))
     .pipe(gulpif(BUILD, rev.manifest()))
