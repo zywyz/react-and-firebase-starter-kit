@@ -1,28 +1,69 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 
-const propTypes = {
-  logged: PropTypes.bool.isRequired,
-  name: PropTypes.string.isRequired,
-  photo: PropTypes.string.isRequired,
-  logout: PropTypes.func.isRequired,
-  loginOrRegisterWithGoogle: PropTypes.func.isRequired,
-};
+export default class LoginButtonView extends Component {
+  static propTypes = {
+    logged: PropTypes.bool.isRequired,
+    name: PropTypes.string.isRequired,
+    photo: PropTypes.string.isRequired,
+    logout: PropTypes.func.isRequired,
+    loginOrRegisterWithGoogle: PropTypes.func.isRequired,
+  };
 
-const LoginButtonView = (props) => {
-  if (!props.logged) {
+  constructor() {
+    super();
+
+    this.state = {
+      hidden: true,
+    };
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.handleAppClick);
+  }
+
+  handleUserInfoClick = () => {
+    const h = this.state.hidden;
+    if (h) {
+      document.addEventListener('click', this.handleAppClick);
+    }
+    this.setState({
+      hidden: !this.state.hidden,
+    });
+  };
+
+  handleAppClick = (e) => {
+    document.removeEventListener('click', this.handleAppClick);
+    const dropdown = ReactDOM.findDOMNode(this.refs.dropdown);
+
+    if (!dropdown.contains(e.target)) {
+      this.setState({
+        hidden: true,
+      });
+    }
+  };
+
+  render() {
+    if (!this.props.logged) {
+      return (
+        <a className="login" onClick={this.props.loginOrRegisterWithGoogle}>Login</a>
+      );
+    }
     return (
-      <a className="login" onClick={props.loginOrRegisterWithGoogle}>Login</a>
+      <div className="login-button">
+        <div className="user-info" onClick={this.handleUserInfoClick}>
+          <img src={this.props.photo} alt="profile-picutre" />
+          <span>{this.props.name}</span>
+          <div className="icon">&#9660;</div>
+        </div>
+        <a
+          className={`logout${this.state.hidden ? ' hidden' : ''}`}
+          onClick={this.props.logout}
+          ref="dropdown"
+        >
+          Logout
+        </a>
+      </div>
     );
   }
-  return (
-    <div className="user-info">
-      <img src={props.photo} alt="profile-picutre" />
-      <span>{props.name}</span>
-      <a className="logout" onClick={props.logout}>Logout</a>
-    </div>
-  );
-};
-
-LoginButtonView.propTypes = propTypes;
-
-export default LoginButtonView;
+}
