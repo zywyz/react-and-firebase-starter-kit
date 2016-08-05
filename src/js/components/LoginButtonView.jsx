@@ -43,6 +43,13 @@ export default class LoginButtonView extends Component {
     }
   };
 
+  handleLogoutClick = () => {
+    this.setState({
+      hidden: true,
+    });
+    this.props.logout();
+  };
+
   render() {
     if (!this.props.logged) {
       return (
@@ -58,7 +65,7 @@ export default class LoginButtonView extends Component {
         </div>
         <a
           className={`logout${this.state.hidden ? ' hidden' : ''}`}
-          onClick={this.props.logout}
+          onClick={this.handleLogoutClick}
           ref="dropdown"
         >
           Logout
