@@ -21,7 +21,7 @@ describe('SubpageView', () => {
     const component = shallow(<SubpageView getData={getData} data={data} />);
     const list = component.find('.list-item');
     expect(list.length).to.equal(2);
-    expect(list.at(0).text()).to.equal('key1 - value1');
-    expect(list.at(1).text()).to.equal('key2 - value2');
+    expect(list.at(0).text()).to.equal('key1value1');
+    expect(list.at(1).text()).to.equal('key2value2');
   });
 });
