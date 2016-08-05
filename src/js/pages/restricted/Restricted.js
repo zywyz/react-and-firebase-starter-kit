@@ -1,18 +1,19 @@
 import { connect } from 'react-redux';
-import SubpageView from './SubpageView';
+import RestrictedView from './RestrictedView';
 import { getData } from '../../actions/firebase';
 
 const mapStateToProps = (state) => ({
-  data: state.data.data,
+  logged: state.loginStatus.logged,
+  restrictedData: state.data.restrictedData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   getData: () => dispatch(getData()),
 });
 
-const Subpage = connect(
+const Restricted = connect(
   mapStateToProps,
   mapDispatchToProps
-)(SubpageView);
+)(RestrictedView);
 
-export default Subpage;
+export default Restricted;

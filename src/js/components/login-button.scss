@@ -1,0 +1,20 @@
+.user-info {
+  float: left;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+
+  img {
+    height: 100%;
+    margin-right: 10px;
+  }
+}
+
+.login {
+  margin-right: 10px;
+}
+
+.logout {
+  margin: 0 10px 0 8px;
+}

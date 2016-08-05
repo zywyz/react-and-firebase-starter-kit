@@ -4,19 +4,12 @@ import { syncHistoryWithStore } from 'react-router-redux';
 
 import MainApp from './MainApp.jsx';
 
-import Subpage from './pages/subpage/Subpage';
 import Homepage from './pages/homepage/Homepage';
+import Subpage from './pages/subpage/Subpage';
+import Restricted from './pages/restricted/Restricted';
 
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-
-import rootReducer from './reducers/index';
-
-let store = createStore(
-  rootReducer,
-  applyMiddleware(thunk)
-);
+import store from './reducers/index';
 
 if (module.hot) {
   module.hot.accept('./reducers', () => {
@@ -34,6 +27,7 @@ const App = () => (
       <Route path="/" component={MainApp}>
         <IndexRoute component={Homepage} />
         <Route path="subpage" component={Subpage} />
+        <Route path="restricted" component={Restricted} />
       </Route>
     </Router>
   </Provider>

@@ -1,3 +1,4 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css);
 @import url(https://fonts.googleapis.com/css?family=Oswald:300,400,700);
 $color-primary: #296db8;
 $bkg-primary: #f8f8f8;
@@ -7,38 +8,13 @@ body {
   color: #444444;
   font-family: 'Oswald', sans-serif;
 }
-.container {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
+
+header {
+  height: 64px;
   background-color: #ffffff;
-  border: solid 1px #eeeeee;
-
-  header {
-    height: 64px;
-    border-bottom: solid 1px #eeeeee;
-    margin: -20px -20px 0 -20px;
-    display: flex;
-    align-items: center;
-
-    ul {
-      margin-left: auto;
-      list-style: none;
-      margin-right: 10px;
-      li {
-        float: left;
-        a {
-          text-decoration: none;
-          padding: 8px 10px;
-          color: $color-primary;
-
-          &:hover {
-            background-color: #f5f5f5;
-          }
-        }
-      }
-    }
-  }
+  border-bottom: solid 1px #eeeeee;
+  display: flex;
+  align-items: center;
 
   .logo {
   	background-image: url('../img/z.png');
@@ -52,8 +28,38 @@ body {
   h1 {
     margin: 0;
     text-align: center;
-    font-size: 22px;
+    font-size: 18px;
   }
+
+  ul {
+    margin-left: auto;
+    list-style: none;
+    li {
+      float: left;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    padding: 8px 10px;
+    color: $color-primary;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #f5f5f5;
+    }
+  }
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border: solid 1px #eeeeee;
+
+
+
 }
 
 .btn {
@@ -76,5 +82,7 @@ body {
 }
 
 @import "../js/components/loader";
+@import "../js/components/login-button";
 @import "../js/pages/homepage/homepage";
 @import "../js/pages/subpage/subpage";
+@import "../js/pages/restricted/restricted";

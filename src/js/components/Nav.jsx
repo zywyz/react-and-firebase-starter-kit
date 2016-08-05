@@ -5,6 +5,7 @@ const Nav = () => (
   <ul>
     <li><Link to="/">Homepage</Link></li>
     <li><Link to="/subpage">Subpage</Link></li>
+    <li><Link to="/restricted">Restricted</Link></li>
   </ul>
 );
 
